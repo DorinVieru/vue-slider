@@ -1,11 +1,13 @@
 // DICHIARO VARIABILE DEL METODO createApp
 const { createApp } = Vue;
 
+
 // INIZIALIZZAZIONE createApp E CREAZIONE ISTANZA DELL'APPLICAZIONE VUE
 createApp({
     // DEFINISCO IL METODO data () NEL QUALE INSERIRO' UN RETURN
     data() {
         return {
+            activeImage: 0,
             title: "Vue Slider",
             slides : [
                 {
@@ -37,8 +39,21 @@ createApp({
         }
     },
     methods: {
-        
+        nextImg(){
+            if(this.activeImage == this.slides.length - 1){
+                this.activeImage = 0;
+            }
+            else{
+                this.activeImage++;
+            }
+        },
+        prevImg() {
+            if (this.activeImage == 0) {
+                this.activeImage = this.slides.length - 1;
+            }
+            else {
+                this.activeImage--;
+            }
+        }
     },
 }).mount('#app')
-
-console.log(slides);
